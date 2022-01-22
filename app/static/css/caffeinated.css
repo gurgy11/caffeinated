@@ -1,0 +1,37 @@
+* {
+    box-sizing: border-box;
+}
+
+.caff-form {
+    max-width: 40%;
+    text-align: left;
+    margin: 0 auto;
+}
+
+.caff-form label {
+    width: 150px;
+    margin-top: 25px;
+}
+
+.caff-form-input {
+    padding: 8px;
+    border: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    width: 100%;
+}
+
+.caff-form-btn {
+    margin-top: 20px;
+    margin-bottom: 5px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    width: 50%;
+    appearance: none;
+    -webkit-appearance: none;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+}
+
+.caff-submit-btn {
+    width: 100% !important;
+}
