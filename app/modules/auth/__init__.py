@@ -1,0 +1,1 @@
+from .auth_views import bp as auth_bp

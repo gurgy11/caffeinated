@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1>Caffeinated Inventory Login</h1>
+<h2 class="caff-text-muted">Use the form below to log into your Caffeinated Inventory account!</h2>
+{% endblock %}
+
+{% block content %}
+<!-- Errors -->
+{% if errors %}
+<div class="alert alert-danger">
+    <ul>
+        {% for error in errors %}
+        <li>{{ error }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+<!-- Login Form -->
+<form action="{{ url_for('auth.register') }}" class="caff-form caff-register-form" method="POST">
+
+    <!-- Username -->
+    <div class="row">
+        <div class="col">
+            <label for="username">Username: </label>
+            <input type="text" name="username" class="caff-form-input" placeholder="Enter username" required>
+        </div>
+    </div>
+
+    <!-- Password -->
+    <div class="row">
+        <div class="col">
+            <label for="password">Password: </label>
+            <input type="password" name="password" class="caff-form-input" placeholder="Enter password" required>
+        </div>
+    </div>
+
+    <!-- Submit -->
+    <div class="row">
+        <div class="col">
+            <button type="submit" class="caff-btn caff-form-btn caff-submit-btn">Login</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <p>
+                Not registered yet? <a href="{{ url_for('auth.register') }}">Create your new account here!</a>
+            </p>
+        </div>
+    </div>
+
+</form>
+{% endblock %}

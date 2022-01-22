@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1>Caffeinated Inventory Registration</h1>
+<h2 class="caff-text-muted">Use the form below to register for a new Caffeinated Inventory account!</h2>
+{% endblock %}
+
+{% block content %}
+
+<!-- Errors -->
+{% if errors %}
+<div class="alert alert-danger">
+    <ul>
+        {% for error in errors %}
+        <li>{{ error }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+<!-- Registration Form -->
+<form action="{{ url_for('auth.register') }}" class="caff-form caff-register-form" method="POST">
+
+    <!-- First and Last Name -->
+    <div class="row">
+        <div class="col">
+            <label for="first_name">First name: </label>
+            <input type="text" name="first_name" class="caff-form-input" placeholder="Enter first name" required>
+        </div>
+        <div class="col">
+            <label for="last_name">Last name: </label>
+            <input type="text" name="last_name" class="caff-form-input" placeholder="Enter last name" required>
+        </div>
+    </div>
+
+    <!-- Username -->
+    <div class="row">
+        <div class="col">
+            <label for="username">Username: </label>
+            <input type="text" name="username" class="caff-form-input" placeholder="Enter username" required>
+        </div>
+    </div>
+
+    <!-- Email -->
+    <div class="row">
+        <div class="col">
+            <label for="email">Email address: </label>
+            <input type="email" name="email" class="caff-form-input" placeholder="Enter email address" required>
+        </div>
+    </div>
+
+    <!-- Password and Confirm Password -->
+    <div class="row">
+        <div class="col">
+            <label for="password">Password: </label>
+            <input type="password" name="password" class="caff-form-input" placeholder="Enter password" required>
+        </div>
+        <div class="col">
+            <label for="confirm_password">Confirm password: </label>
+            <input type="password" name="confirm_password" class="caff-form-input" placeholder="Enter password again" required>
+        </div>
+    </div>
+
+    <!-- Submit -->
+    <div class="row">
+        <div class="col">
+            <button type="submit" class="caff-btn caff-form-btn caff-submit-btn">Register</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <p>
+                Already have an account? <a href="{{ url_for('auth.login') }}">Log into your account here!</a>
+            </p>
+        </div>
+    </div>
+
+</form>
+
+{% endblock %}
