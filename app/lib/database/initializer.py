@@ -1,7 +1,6 @@
-from nis import cat
 import os
 
-from mysql.connector import connect
+from mysql.connector import connect, Error
 from dotenv import load_dotenv
 
 from .database import Database
@@ -10,6 +9,10 @@ from .database import Database
 from app.modules.addresses import Address
 from app.modules.brands import Brand
 from app.modules.categories import Category
+from app.modules.customers import Customer
+from app.modules.employees import Employee
+from app.modules.orders import Order
+from app.modules.payments import Payment
 from app.modules.users import User
 
 
@@ -58,3 +61,26 @@ class Initializer():
         category = Category()
         categories_sql = category.get_create_sql_table_query()
         self.db.create_table(categories_sql)
+        
+        # Customer
+        customer = Customer()
+        customers_sql = customer.get_create_sql_table_query()
+        self.db.create_table(customers_sql)
+        
+        # Payment
+        payment = Payment()
+        payments_sql = payment.get_create_sql_table_query()
+        self.db.create_table(payments_sql)
+        
+        # Order
+        try:
+            order = Order()
+            orders_sql = order.get_create_sql_table_query()
+            self.db.create_table(orders_sql)
+        except Error as e:
+            print(str(e))
+        
+        # Employee
+        employee = Employee()
+        employees_sql = employee.get_create_sql_table_query()
+        self.db.create_table(employees_sql)

@@ -5,14 +5,6 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 class User(Model):
     
-    def __init__(self, get_create_table_query=False):
-        self._get_create_table_query = get_create_table_query
-        self.create_table_query = None
-        
-        if self._get_create_table_query is True:
-            self.create_table_query = self.get_create_sql_table_query()
-            
-    
     def __init__(self, name=None, username=None, email=None, password=None, 
                  phone=None, address_id=None, record_id=None, created_at=None, updated_at=None):
         super().__init__(record_id=record_id, created_at=created_at, updated_at=updated_at)

@@ -35,3 +35,15 @@
 .caff-submit-btn {
     width: 100% !important;
 }
+
+.caff-text-muted {
+    opacity: 0.6;
+}
+
+.caff-header {
+    width: 100%;
+}
+
+.active {
+    opacity: 1 !important;
+}

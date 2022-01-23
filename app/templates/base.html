@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -14,12 +15,13 @@
 
     <!-- JS Scripts -->
     <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/active.js') }}"></script>
     <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
     {% block scripts %}{% endblock %}
 
     <!-- CSS Stylesheets -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/caffeinated.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
     {% block styles %}{% endblock %}
 
 </head>
@@ -27,30 +29,67 @@
 <body>
 
     <!-- Navbar -->
-    <div class="caff-navbar">
-        {% if session.get('user_id') %}
-        <ul>
-            <li class="caff-nav-item">
-                <a href="{{ url_for('index') }}" class="caff-nav-link">Home</a>
-            </li>
-            <li class="caff-nav-item">
-                <a href="{{ url_for('brands.index') }}" class="caff-nav-link">Brands</a>
-            </li>
-            <li class="caff-nav-item">
-                <a href="{{ url_for('categories.index') }}">Categories</a>
-            </li>
-        </ul>
-        {% endif %}
-    </div>
-    
-    <!-- Header -->
-    <div class="header">
-        {% block header %}{% endblock %}
-        <hr>
-    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a href="{{ url_for('index') }}" class="navbar-brand"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav me-auto">
+                {% if session.get('user_id') %}
+                <li class="nav-item" id="homeNav">
+                    <a href="{{ url_for('index') }}" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item dropdown" id="brandsNav">
+                    <a class="nav-link dropdown-toggle" href="#" id="brandsDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Brands
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="brandsDropdown">
+                        <a href="{{ url_for('brands.index', page=1) }}" class="dropdown-item">Index</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="{{ url_for('brands.create') }}" class="dropdown-item">Create</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown" id="categoriesNav">
+                    <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Categories
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="categoriesDropdown">
+                        <a href="{{ url_for('categories.index') }}" class="dropdown-item">Index</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="{{ url_for('categories.create') }}" class="dropdown-item">Create</a>
+                    </div>
+                </li>
+                {% endif %}
+            </ul>
+            <ul class="navbar-nav ms-auto">
+                {% if session.get('user_id') %}
+                <div class="nav-item">
+                    <a href="#" class="nav-link">{{ session.get('user_username') }}</a>
+                </div>
+                <li class="nav-item">
+                    <a href="{{ url_for('auth.logout') }}" class="nav-link">Logout</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a href="{{ url_for('auth.login') }}" class="nav-link">Login</a>
+                </li>
+                <div class="nav-item">
+                    <a href="{{ url_for('auth.register') }}" class="nav-link">Register</a>
+                </div>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
 
     <!-- Content -->
-    <div class="caff-container">
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            {% block header %}{% endblock %}
+            <hr>
+        </div>
         {% block content %}
         {% endblock %}
     </div>

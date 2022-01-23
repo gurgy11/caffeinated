@@ -8,7 +8,9 @@ class Validator():
         
         valid = True
         
-        if len(value) < min_length:
+        if value is None:
+            valid = False
+        elif len(value) < min_length:
             valid = False
         
         return valid
@@ -18,7 +20,9 @@ class Validator():
         
         valid = True
         
-        if len(value) > max_length:
+        if value is None:
+            valid = False
+        elif len(value) > max_length:
             valid = False
         
         return valid

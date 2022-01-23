@@ -2,3 +2,4 @@ venv/*
 caffeinated_v1
 caffeinated-inventory.code-workspace
 jsconfig.json
+__pycache__/*
