@@ -78,13 +78,9 @@ class Customer(Model):
             notes TEXT,
             created_by_id INT(11) DEFAULT NULL,
             created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-            updated_at TIMESTAMP DEFAULT NULL,
-            CONSTRAINT fk_customer_address_id
-            FOREIGN KEY (address_id)
-                REFERENCES addresses(id),
-            CONSTRAINT fk_customer_user_id
-            FOREIGN KEY (created_by_id)
-                REFERENCES users(id)
+            updated_at NULL TIMESTAMP DEFAULT NULL,
+            FOREIGN KEY (address_id) REFERENCES addresses(id),
+            FOREIGN KEY (created_by_id) REFERENCES users(id)
         )
         """
         

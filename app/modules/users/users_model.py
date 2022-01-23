@@ -97,8 +97,8 @@ class User(Model):
             address_id INT(11) DEFAULT NULL,
             password VARCHAR(255) NOT NULL,
             created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-            updated_at TIMESTAMP DEFAULT NULL
-        )
+            updated_at TIMESTAMP NULL DEFAULT NULL
+        );
         '''
         
         return query

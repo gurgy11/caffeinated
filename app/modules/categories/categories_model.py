@@ -64,7 +64,7 @@ class Category(Model):
             parent_id INT(11) DEFAULT NULL,
             created_by_id INT(11) DEFAULT NULL,
             created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-            updated_at TIMESTAMP DEFAULT NULL,
+            updated_at TIMESTAMP NULL DEFAULT NULL,
             CONSTRAINT fk_category_user_id
             FOREIGN KEY (created_by_id)
                 REFERENCES users(id)

@@ -1,0 +1,11 @@
+CREATE TABLE IF NOT EXISTS suppliers (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(255) NULL,
+    phone VARCHAR(255) NULL,
+    details TEXT NULL,
+    comments TEXT NULL,
+    created_by_id INT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NULL
+);

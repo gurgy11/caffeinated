@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS brands (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(45) NOT NULL,
+    summary TEXT NULL,
+    notes TEXT NULL,
+    created_by_id INT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NULL
+);
