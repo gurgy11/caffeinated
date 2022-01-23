@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template
+from flask import Flask, render_template, session
 from dotenv import load_dotenv
 
 
@@ -20,7 +20,8 @@ from app.lib.authentication import login_required
 @app.route('/index')
 @login_required
 def index():
-    return render_template('index.html', title='Home')
+    username = session.get('user_username')
+    return render_template('index.html', title='Home', username=username)
 
 ''' Import and Register Blueprints '''
 

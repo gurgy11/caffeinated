@@ -10,3 +10,13 @@ bp = Blueprint('categories', __name__, url_prefix='/categories')
 @login_required
 def index():
     return render_template('categories/index.html', title='Categories')
+
+
+@bp.route('/create', methods=['GET', 'POST'])
+@login_required
+def create():
+    
+    if request.method == 'POST':
+        return jsonify(request.form)
+    
+    return render_template('categories/create.html', title='Categories')
